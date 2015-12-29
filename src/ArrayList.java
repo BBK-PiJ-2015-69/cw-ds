@@ -45,6 +45,27 @@ public class ArrayList implements List {
 		return numberOfElements;
 	}
 
+	/*
+	* CHECKS AN INDEX AGAAINST ELEMENTS IN LIST
+	* PARAMETER IS THE INDEX IN QUESTION
+	* 
+	*/
+	public ReturnObject check(int index){
+		ReturnObjectImpl obj = new ReturnObjectImpl();
+		if ( (list.length - 2) <= index) {
+			obj = checkIndex(index);
+			increaseArray;
+		}else if (numberOfElements == 0) {
+			obj.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
+		}else if (index > numberOfElements || index < 0) {
+			obj.setErrorM(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		}else{
+			obj.setErrorM(ErrorMessage.NO_ERROR);
+			obj.setObj(list[index]);
+		}
+		return obj;
+	}
+
 	/* 
 	* RETURNS NUMBER OF ITEMS AT CURRENT POSITION
 	* PARAMETER IS POSITION IN LIST OF ITEM TO RETRIEVE
