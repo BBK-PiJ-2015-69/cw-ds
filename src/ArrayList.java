@@ -1,6 +1,13 @@
 /**
 * An Array implementation of the List interface
-*
+* List: Common way to store arrays of data; collection of any kind of objects.
+* No null objects. As many as JVM memory can take.
+* Types may be String, Integers, Doubles and other Lists themselves.
+* First element has index of zero; not one.
+* Array: A container object holds fixed number of values; single type
+* An approved data structure for this coursework assignment
+* ReturnObject: We need this to handle errors such as null objects
+* because this course has not yet taught exceptions
 * @author Luke Jones
 */
 
