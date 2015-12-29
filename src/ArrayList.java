@@ -55,7 +55,7 @@ public class ArrayList implements List {
 		* IF INDEX IS EQUAL TO OR GREATER THAN SIZE OF LIST, OR NEGATIVE
 		* ERROR IS RETURNED	(IN RETURNOBJECT)
 		*/
-		if (obj.getError() == ErrorMessage.No_ERROR) {
+		if (obj.getError() == ErrorMessage.NO_ERROR) {
 			obj.setObj(list[index]);
 			if(list[index] == null){
 				obj.setErrorM(ErrorMessage.INDEX_OUT_OF_BOUNDS);
@@ -68,7 +68,7 @@ public class ArrayList implements List {
 
 	/*
 	* ADDS AN ELEMENT TO LIST
-	* FIRST PARAMETER IS INDEX OF POSITION ATT WHICH TO INSERT
+	* FIRST PARAMETER IS INDEX OF POSITION AT WHICH TO INSERT
 	* MUST ALSO UPDATE INDICES BEFORE AND AFTER THIS POSITION
 	* SECOND PARAMETER IS VALUE TO INSERT INTO LIST
 	* 
@@ -80,35 +80,85 @@ public class ArrayList implements List {
 		* OR IF NULL OBJECT PROVIDED (MUST REJECT)
 		* ERROR IS RETURNED	(IN RETURNOBJECT)
 		*/		
-		
+		if(obj.getError() == ErrorMessage.EMPTY_STRUCTURE) {
+			numberOfElements++;
+			list[index] = item;
+			index.setErrorM(ErrorMessage.NO_ERROR);
+		}else if(obj.getError() == ErrorMessage.NO_ERROR){
+			if(item != null) {
+				obj.setObj(item);
+				if(list[index] == null) {
+					numberOfElements++;
+				}
+				list[index] = item;
+			}else{
+				obj.setErrorM(ErrorMessage.INVALID_ARGUMENT);
+			}
+		}
+		return obj;
 	}
 
 	/*
 	* ADDS AN ELEMENT TO LIST
-	* PARAMETER IS INDEX OF POSITION ATT WHICH TO INSERT
-	* MUST ALSO UPDATE INDICES BEFORE AND AFTER THIS POSITION
+	* PARAMETER IS VALUE TO INSERT INTO LIST
 	* 
 	*/
-	public ReturnObject add(int index){
-		ReturnObjectImpl obj = checkIndex(index);
+	public ReturnObject add(Object item){
+		ReturnObjectImpl obj = new ReturnObjectImpl(item);
 		/* 
-		* IF INDEX IS EQUAL TO OR GREATER THAN SIZE OF LIST, OR NEGATIVE
+		* IF NULL OBJECT PROVIDED (MUST REJECT)
 		* ERROR IS RETURNED	(IN RETURNOBJECT)
 		*/
-
+		if (item == null) {
+			obj.setErrorM(ErrorMessage.INVALID_ARGUMENT);
+			return obj;
+		}
+		if((numberOfElements + 1) >= list.length) {
+			increaseArray();
+		}
+		if(list[numberOfElements] != null) {
+			for(int i = size; i < list.length; i++) {
+				if(list[i] == null) {
+					list[i] = item;
+					numberOfElements++;
+					obj.setErrorM(ErrorMessage.NO_ERROR);
+					return obj;
+				}
+			}
+		}else{
+			list[numberOfElements] = item;
+			numberOfElements++;
+			list.setErrorM(ErrorMessage.NO_ERROR);
+			return obj;
+		}
+		return obj;
 	}
 
 	/* 
 	* DELETES AN ELEMENT FROM THE LIST 
-	*
+	* PARAMETER IS POSITION OF ITEM TO REMOVE
+	* MUST ALSO UPDATE INDICES BEFORE AND AFTER THIS POSITION
 	*/
 	public ReturnObject remove(int index){
 		ReturnObjectImpl obj = checkIndex(index);
+		Object placeholder = new Object();
 		/* 
 		* IF INDEX IS EQUAL TO OR GREATER THAN SIZE OF LIST, OR NEGATIVE
 		* ERROR IS RETURNED	(IN RETURNOBJECT)
 		*/
-		
+		if(obj.getError() == ErrorMessage.NO_ERROR) {
+			obj.setObj(list[index]);
+			for(int i = index; i < list.length; i++) {
+				if ((i + 1) != list.length) {
+					placeholder = list[i++];
+				}else{
+					placeholder = null;
+				}
+				list[i] = temp;
+			}
+			numberOfElements--;
+		}
+		return obj;
 	}
 
 }
