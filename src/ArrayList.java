@@ -45,6 +45,17 @@ public class ArrayList implements List {
 		return numberOfElements;
 	}
 
+	// TO STRING
+	public String toString(){
+		String ary[];
+		for (int i = 0; i < numberOfElements; i++) {
+			if(list[i] != null) {
+				ary += list[i];
+			}
+		}
+		return ary;
+	}
+
 	// INCREASE ARRAY SIZE
 	public void increaseArray(){
 		if(list.length != 6000){
