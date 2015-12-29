@@ -45,6 +45,17 @@ public class ArrayList implements List {
 		return numberOfElements;
 	}
 
+	// INCREASE ARRAY SIZE
+	public void increaseArray(){
+		if(list.length != 6000){
+			Object[] placeholder = new Object[list.length * 2];
+			for (int i = 0; i < numberOfElements; i++) {
+				placeholder[i] = this.list[i];
+			}
+			this.list = placeholder;
+		}
+	}
+
 	/*
 	* CHECKS AN INDEX AGAAINST ELEMENTS IN LIST
 	* PARAMETER IS THE INDEX IN QUESTION
