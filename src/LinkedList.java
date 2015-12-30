@@ -70,9 +70,16 @@ public class LinkedList implements List {
 		return ary;
 	}
 
-	// RETURNS OBJECT AT POSITION OF INDEX
+	/* 
+	* RETURNS NUMBER OF ITEMS AT CURRENT POSITION
+	* PARAMETER IS POSITION IN LIST OF ITEM TO RETRIEVE
+	*/
 	public ReturnObject get(int index) {
 		ReturnObjectImpl obj = new ReturnObjectImpl();
+		/* 
+		* IF INDEX IS EQUAL TO OR GREATER THAN SIZE OF LIST, OR NEGATIVE
+		* ERROR IS RETURNED	(IN RETURNOBJECT)
+		*/
 		if(super.isEmpty()){
 			obj.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
 			return obj;
@@ -82,8 +89,22 @@ public class LinkedList implements List {
 		return obj;
 	}
 
+	// ADD
+
+	/*
+	* ADDS AN ELEMENT TO LIST
+	* FIRST PARAMETER IS INDEX OF POSITION AT WHICH TO INSERT
+	* MUST ALSO UPDATE INDICES BEFORE AND AFTER THIS POSITION
+	* SECOND PARAMETER IS VALUE TO INSERT INTO LIST
+	* 
+	*/
 	public ReturnObject add(int index, Object item) {
 		ReturnObjectImpl obj = new ReturnObjectImpl();
+		/* 
+		* IF INDEX IS EQUAL TO OR GREATER THAN SIZE OF LIST, OR NEGATIVE
+		* OR IF NULL OBJECT PROVIDED (MUST REJECT)
+		* ERROR IS RETURNED	(IN RETURNOBJECT)
+		*/	
 		if(super.isEmpty()){
 			obj.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
 			return obj;
@@ -93,8 +114,17 @@ public class LinkedList implements List {
 		return obj;
 	}
 
+	/*
+	* ADDS AN ELEMENT TO LIST
+	* PARAMETER IS VALUE TO INSERT INTO LIST
+	* 
+	*/
 	public ReturnObject add(Object item) {
 		ReturnObjectImpl obj = new ReturnObjectImpl();
+		/* 
+		* IF NULL OBJECT PROVIDED (MUST REJECT)
+		* ERROR IS RETURNED	(IN RETURNOBJECT)
+		*/
 		if(super.isEmpty()){
 			obj.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
 			return obj;
@@ -104,8 +134,17 @@ public class LinkedList implements List {
 		return obj;
 	}
 
+	/* 
+	* DELETES AN ELEMENT FROM THE LIST 
+	* PARAMETER IS POSITION OF ITEM TO REMOVE
+	* MUST ALSO UPDATE INDICES BEFORE AND AFTER THIS POSITION
+	*/
 	public ReturnObject remove(int index) {
 		ReturnObjectImpl obj = new ReturnObjectImpl();
+		/* 
+		* IF INDEX IS EQUAL TO OR GREATER THAN SIZE OF LIST, OR NEGATIVE
+		* ERROR IS RETURNED	(IN RETURNOBJECT)
+		*/
 		if(super.isEmpty()){
 			obj.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
 			return obj;
