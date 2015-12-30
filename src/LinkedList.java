@@ -61,24 +61,25 @@ public class LinkedList implements List {
 
 	// TO STRING
 	public String toString(){
-		String ary[];
-		for (int i = 0; i < numberOfElements; i++) {
-			if(list[i] != null) {
-				ary += list[i];
-			}
+		if(this.head != null) {
+			return this.head.toString();
+		}else{
+			return "";
 		}
-		return ary;
 	}
 
 	// TO STRING ALL
 	public String toStringAll(){
-		String ary[];
-		for (int i = 0; i < numberOfElements; i++) {
-			if(list[i] != null) {
-				ary += list[i];
-			}
+		ObjectNode curr = new ObjectNode();
+		curr = this.head;
+		String list = "";
+		if (curr == null) {
+
 		}
-		return ary;
+		while (curr != null) {
+
+		}
+		return list;
 	}
 
 	/*
