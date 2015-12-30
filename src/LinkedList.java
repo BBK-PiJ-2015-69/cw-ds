@@ -1,6 +1,11 @@
 /**
 * LinkedList implementation of List
-*
+* List: Common way to store arrays of data; collection of any kind of objects.
+* No null objects. As many as JVM memory can take.
+* Types may be String, Integers, Doubles and other Lists themselves.
+* First element has index of zero; not one.
+* ReturnObject: We need this to handle errors such as null objects
+* because this course has not yet taught exceptions
 * @author Luke Jones
 */
 public class LinkedList implements List {
