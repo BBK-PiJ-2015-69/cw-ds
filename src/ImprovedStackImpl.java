@@ -47,36 +47,80 @@ public class ImprovedStackImpl implements ImprovedStack {
 	}
 
 	public ReturnObject top() {
-		ReturnObjectImpl obj = new ReturnObjectImpl();
-		if(super.isEmpty()){
-			obj.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
-			return obj;
+		ReturnObjectImpl top = new ReturnObjectImpl();
+		if(list != null){ //alternately if(super.isEmpty()){
+			if(list.size() != 0){
+				int size = (list.size() - 1);
+				top.setErrorM(list.get(size).getError());
+				top.setObject(list.get(size).getReturnVal()); //obj.setObject(super.getValue(0));
+			}else{
+				top.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
+			}
+		}else{
+			top.setErrorM(ErrorMessage.NO_ERROR); //is this an empty structure? or no error?
 		}
-		obj.setObject(super.getValue(0));
-		obj.setErrorM(ErrorMessage.NO_ERROR);
-		return obj;
+		return top;
 	}
 
+	
 	public ReturnObject pop() {
-		ReturnObjectImpl obj = new ReturnObjectImpl();
-		if(super.isEmpty()){
-			obj.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
-			return obj;
+		ReturnObjectImpl pop = new ReturnObjectImpl();
+		if(list != null){ //alternately if(super.isEmpty()){
+			if(list.size() != 0){
+				int size = (list.size() - 1);
+				pop.setErrorM(list.get(size).getError());
+				pop.setObject(list.get(size).getReturnVal()); //obj.setObject(super.getValue(0));
+			}else{
+				pop.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
+			}
+		}else{
+			pop.setErrorM(ErrorMessage.NO_ERROR); //is this an empty structure? or no error?
 		}
-		obj.setObject(super.getValue(0));
-		obj.setErrorM(ErrorMessage.NO_ERROR);
-		return obj;
+		return pop;
 	}
 
+	/* 
+	* REVERSE
+	* RETURNS STACK WITH ITEMS REVERSED
+	* SWITCHES TOP WITH BOTTOM, ETC.
+	*/
 	public ImprovedStack reverse() {
-		ImprovedStackImpl reversedStack = ImprovedStackImpl();
-
-
+		ArrayList reversedList = new ArrayList();
+		ImprovedStackImpl reversedStack = new ImprovedStackImpl(reversedList);
+		if(list != null){
+			int size = list.size();
+			for (size = 0; size >=0; size--){
+				reversedList.add(list.get(size).getReturnVal());
+			}
+		}
 		return reversedStack;
 	}
 
+	/* 
+	* REMOVE
+	* REMOVES THE OBJECT FROM STACK
+	* IF MULIPLE TIMES, ALL DELETED
+	*/
 	public void remove(Object obj) {
-		
+		if(list != null){
+			for (int i=0; i < list.size(); i++) {
+				if (list.get(i).getReturnVal().equals(obj)) {
+					list.remove(i);
+					remove(obj);
+				}
+			}
+		}
+	}
+
+	// TO STRING
+	public String toString(){
+		String listString = new String();
+		if(list != null){
+			for (int i = 0; i < list.size(); i++) {
+				listString += list.get(i).getReturnVal();
+			}
+		}
+		return listString;
 	}
 
 }
