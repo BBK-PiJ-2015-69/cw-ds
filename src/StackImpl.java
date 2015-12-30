@@ -1,6 +1,10 @@
 /**
-* Stack implementation extending Abstract Stack
-*
+* Interface for Stack implementation extending Abstract Stack
+* Stack: LIFO (last in first out) data structure
+* Uses List data strucutre for storage
+* ReturnObject: We need this to handle errors 
+* (such as calls for top of empty stacks)
+* because this course has not yet taught exceptions
 * @author Luke Jones
 */
 
