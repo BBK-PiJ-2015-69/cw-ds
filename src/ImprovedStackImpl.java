@@ -1,6 +1,9 @@
 /**
-* implementation of the Improved Stack
-*
+* Implementation of the Improved Stack
+* Incrased number of methods
+* The base data structure for storage will be List 
+* ReturnObject: We need this to handle errors such as calls to null list
+* because this course has not yet taught exceptions
 * @author Luke Jones
 */
 
