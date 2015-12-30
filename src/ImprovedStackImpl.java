@@ -9,8 +9,10 @@
 
 public class ImprovedStackImpl implements ImprovedStack {
 
+	// SET LIST
 	private List list;
 
+	// CONSTRUCTORS
 	public ImprovedStackImpl(){
 		this.list = null;
 	}
@@ -19,10 +21,15 @@ public class ImprovedStackImpl implements ImprovedStack {
 		this.list = list;
 	}
 
+	// GETTER
 	public List getList(){
 		return this.list;
 	}	
 
+	/*
+	* SIZE
+	* RETURNS OF NUMBER OF ITEMS IN STACK
+	*/
 	public int size(){
 		if(list != null){
 			return list.size();
@@ -31,6 +38,7 @@ public class ImprovedStackImpl implements ImprovedStack {
 		}
 	}
 
+	// TRUE IF STACK EMPTY
 	public boolean isEmpty(){
 		if(list != null){
 			if(list.isEmpty() == true) {
@@ -40,12 +48,21 @@ public class ImprovedStackImpl implements ImprovedStack {
 		return false;
 	}
 
+	/*
+	* PUSH
+	* ADDS ELEMENT TO TOP OF THE STACK
+	*/
 	public void push(Object obj){
 		if(list != null){
 			list.add(obj);
 		}
 	}
-
+	
+	/*
+	* POP
+	* RETURNS TOP ITEM IN STACK
+	* BUT UNLIKE POP (BELOW) DOESN'T REMOVE IT
+	*/ 
 	public ReturnObject top() {
 		ReturnObjectImpl top = new ReturnObjectImpl();
 		if(list != null){ //alternately if(super.isEmpty()){
@@ -62,7 +79,11 @@ public class ImprovedStackImpl implements ImprovedStack {
 		return top;
 	}
 
-	
+	/*
+	* POP
+	* REMOVES TOP ITEM IN STACK
+	* AND RETURNS IT TO US
+	*/ 
 	public ReturnObject pop() {
 		ReturnObjectImpl pop = new ReturnObjectImpl();
 		if(list != null){ //alternately if(super.isEmpty()){
