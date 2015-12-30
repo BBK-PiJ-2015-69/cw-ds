@@ -70,14 +70,15 @@ public class LinkedList implements List {
 
 	// TO STRING ALL
 	public String toStringAll(){
-		ObjectNode curr = new ObjectNode();
-		curr = this.head;
+		ObjectNode current = new ObjectNode();
+		current = this.head;
 		String list = "";
-		if (curr == null) {
-
+		if (current == null) {
+			return list;
 		}
-		while (curr != null) {
-
+		while (current != null) {
+			list += current.toString();
+			current = current.getNext();
 		}
 		return list;
 	}
