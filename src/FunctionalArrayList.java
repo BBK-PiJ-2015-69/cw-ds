@@ -1,6 +1,8 @@
 /**
 * Functional Array implementation of the List interface
-*
+* These extra methods will let us recursively use lists
+** ReturnObject: We need this to handle errors such as calls to null list
+* because this course has not yet taught exceptions
 * @author Luke Jones
 */
 
