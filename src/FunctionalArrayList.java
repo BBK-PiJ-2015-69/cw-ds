@@ -8,8 +8,10 @@
 
 public class FunctionalArrayList extends ArrayList implements FunctionalList {
 
+	// HEAD INDEX TO ZERO
 	private final int HEAD_INDEX = 0;
 
+	// CONSTRUCTORS
 	public FunctionalArrayList(int defaultSize){
 		super(defaultSize);
 	}
@@ -18,6 +20,10 @@ public class FunctionalArrayList extends ArrayList implements FunctionalList {
 		super(sourceArray);
 	}
 
+	/*
+	* HEAD
+	* RETURNS FIRST ELEMENT IN LIST
+	*/
 	public ReturnObjectImpl head(){
 		ReturnObjectImpl obj = new ReturnObjectImpl();
 		if(super.isEmpty()){  // alernatively use super.getObj() == null
@@ -30,6 +36,12 @@ public class FunctionalArrayList extends ArrayList implements FunctionalList {
 		return obj;
 	}
 
+
+	/*
+	* REST
+	* RETURNS NEW LIST WITH ALL ELEMENTS OF FORMER, IN ORDER, EXCEPT WITHOUT THE HEAD
+	* ORIGINAL LIST UNAFFECTED
+	*/
 	public FunctionalArrayList rest(){
 		FunctionalArrayList rest = new FunctionalArrayList();
 		if(super.isEmpty()){  // alernatively use super.getObj() == null
