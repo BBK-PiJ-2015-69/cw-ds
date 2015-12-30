@@ -24,15 +24,26 @@ public class ImprovedStackImpl implements ImprovedStack {
 	}	
 
 	public int size(){
-		return list.size();
+		if(list != null){
+			return list.size();
+		}else{
+			return 0;
+		}
 	}
 
 	public boolean isEmpty(){
-		return list.isEmpty();
+		if(list != null){
+			if(list.isEmpty() == true) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public void push(Object obj){
-		this.arrayStack.add(obj);
+		if(list != null){
+			list.add(obj);
+		}
 	}
 
 	public ReturnObject top() {
