@@ -12,10 +12,34 @@ public class LinkedList implements List {
 
 	private Node head;
 	private Node tail;
-	private int lastPosition = -1;
+	private int size; //needed?
+	private int lastPosition = -1; //needed?
+
+	// CONSTRUCTOR
+	public LinkedList() {
+		this.head = null;
+	}
+
+	// GETTERS
+	public Node getHead() {
+		return head;
+	}
+
+	public void getTail() {
+		return tail;
+	}
 
 	public int getLastPosition() {
 		return lastPosition;
+	}
+
+	// SETTERS
+	public void setHead(Node head) {
+		this.head = head;
+	}
+
+	public void setTail(Node head) {
+		this.tail = tail;
 	}
 
 	public void setLastPosition(int lastPosition) {
@@ -27,22 +51,6 @@ public class LinkedList implements List {
 			return true;
 		}
 		return false;
-	}
-
-	public Node getHead() {
-		return head;
-	}
-
-	public void getTail() {
-		return tail;
-	}
-
-	public void setHead(Node head) {
-		this.head = head;
-	}
-
-	public void setTail(Node head) {
-		this.tail = tail;
 	}
 
 	public int size(){
