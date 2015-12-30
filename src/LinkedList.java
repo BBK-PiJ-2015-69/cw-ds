@@ -114,17 +114,19 @@ public class LinkedList implements List {
 	* PARAMETER IS POSITION IN LIST OF ITEM TO RETRIEVE
 	*/
 	public ReturnObject get(int index) {
-		ReturnObjectImpl obj = new ReturnObjectImpl();
+		ReturnObjectImpl obj = checkIndex(index);
+		ObjectNode current = new ObjectNode();
+		current = this.head;
 		/* 
 		* IF INDEX IS EQUAL TO OR GREATER THAN SIZE OF LIST, OR NEGATIVE
 		* ERROR IS RETURNED	(IN RETURNOBJECT)
 		*/
-		if(super.isEmpty()){
-			obj.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
-			return obj;
+		if(obj.getError() == ErrorMessage,NO_ERROR) {
+			for (int i = 0; i < index; i++) {
+				current = current.getNext();
+			}
+			obj.setObj(current.getObject());
 		}
-		obj.setObject(super.getValue(0));
-		obj.setErrorM(ErrorMessage.NO_ERROR);
 		return obj;
 	}
 
