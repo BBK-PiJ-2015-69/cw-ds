@@ -90,16 +90,21 @@ public class LinkedList implements List {
 	*/
 	public ReturnObject check(int index){
 		ReturnObjectImpl obj = new ReturnObjectImpl();
-		if ( (list.length - 2) <= index) {
-			obj = checkIndex(index);
-			increaseArray;
-		}else if (numberOfElements == 0) {
-			obj.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
-		}else if (index > numberOfElements || index < 0) {
+		ObjectNode current = new ObjectNode();
+		current = this.head();
+		if (index < 0) {
 			obj.setErrorM(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		}else if (this.head == null) {
+			obj.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
+		}else if (int i = 0; i < index; i++) {
+			if (current.getNext() == null) {
+				obj.setErrorM(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+				return obj;
+			}
+			current = current.getNext();
 		}else{
+			obj.setObj(current.getObject());
 			obj.setErrorM(ErrorMessage.NO_ERROR);
-			obj.setObj(list[index]);
 		}
 		return obj;
 	}
