@@ -175,17 +175,34 @@ public class LinkedList implements List {
 	* 
 	*/
 	public ReturnObject add(Object item) {
-		ReturnObjectImpl obj = new ReturnObjectImpl();
+		ReturnObjectImpl obj = checkIndex(index);
 		/* 
-		* IF NULL OBJECT PROVIDED (MUST REJECT)
+		* IF INDEX IS EQUAL TO OR GREATER THAN SIZE OF LIST, OR NEGATIVE
+		* OR IF NULL OBJECT PROVIDED (MUST REJECT)
 		* ERROR IS RETURNED	(IN RETURNOBJECT)
-		*/
-		if(super.isEmpty()){
-			obj.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
-			return obj;
+		*/	
+		if(item == null) {
+			obj.setErrorM(ErrorMessage.INVALID_ARGUMENT;
+		}else{
+			if(this.head == null){ 
+				numberOfElements++;
+				ObjectNode newNode = new ObjectNode(null, item);
+				this.head = newNode;
+				obj.setErrorM(ErrorMessage.NO_ERROR);
+				obj.setObject(newNode.getObject());
+			}else{
+				ObjectNode current = new ObjectNode();
+				current = this.head;
+				while (current.getNext() != null) {
+					current = current.getNext();
+				}
+				numberOfElements++;
+				ObjectNode newNode = new ObjectNode(current, item);
+				current.setNext(newItem);
+				obj.setObject(newNode.getObject());
+				obj.setErrorM(ErrorMessage.NO_ERROR);
+			}
 		}
-		obj.setObject(super.getValue(0));
-		obj.setErrorM(ErrorMessage.NO_ERROR);
 		return obj;
 	}
 
