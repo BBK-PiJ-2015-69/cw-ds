@@ -59,7 +59,7 @@ public class ImprovedStackImpl implements ImprovedStack {
 	}
 	
 	/*
-	* POP
+	* TOP
 	* RETURNS TOP ITEM IN STACK
 	* BUT UNLIKE POP (BELOW) DOESN'T REMOVE IT
 	*/ 

@@ -10,14 +10,17 @@
 
 public class StackImpl extends AbstractStack {
 
+	// CONSTRUCTOR
 	public StackImpl(List list) {
 		super(list);
 	}
 
+	// GETTER
 	public List getList() {
 		return internalList;
 	}
 
+	// TRUE IF STACK EMPTY
 	public boolean isEmpty() {
 		if (internalList != null) {
 			if (internalList.isEmpty() != false) {
@@ -27,12 +30,16 @@ public class StackImpl extends AbstractStack {
 		return false;
 	}
 
+	// RETURNS NUMBER OF ITEMS IN STACK
 	public int size() {
 		if (internalList != null) {
-			internalList.add(item);
+			return internalList.size();
+		}else{
+			return 0;
 		}
 	}
 
+	// ADDS ELEMENT TO TOP OF STACK
 	public void push(Object item){
 		if (internalList != null) {
 			List placeholder = new ArrayList();
@@ -43,28 +50,41 @@ public class StackImpl extends AbstractStack {
 		}
 	}
 
+	/*
+	* TOP
+	* RETURNS TOP ITEM IN STACK
+	* BUT UNLIKE POP (BELOW) DOESN'T REMOVE IT
+	*/ 
 	public ReturnObject top() {
-		ReturnObjectImpl obj = new ReturnObjectImpl();
-		if(super.isEmpty()){
-			obj.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
-			return obj;
+		ReturnObjectImpl top = new ReturnObjectImpl();
+		if ((internalList != null) && (internalList.size() != 0)) {
+			int size = (internalList.size() - 1);
+			top.setErrorM(internalList.get(size).getError())
+			top.setObject(internalList.get(size).getReturnVal());
+		}else{
+			top.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
 		}
-		obj.setObject(super.getValue(0));
-		obj.setErrorM(ErrorMessage.NO_ERROR);
-		return obj;
+		return top;
 	}
 
+	/*
+	* POP
+	* REMOVES TOP ITEM IN STACK
+	* AND RETURNS IT TO US
+	*/ 
 	public ReturnObject pop() {
-		ReturnObjectImpl obj = new ReturnObjectImpl();
-		if(super.isEmpty()){
-			obj.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
-			return obj;
+		ReturnObjectImpl pop = new ReturnObjectImpl();
+		if ((internalList != null) && (internalList.size() != 0)) {
+			int size = (internalList.size() - 1);
+			pop.setErrorM(internalList.get(size).getError())
+			pop.setObject(internalList.get(size).getReturnVal());
+		}else{
+		 	pop.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
 		}
-		obj.setObject(super.getValue(0));
-		obj.setErrorM(ErrorMessage.NO_ERROR);
-		return obj;
+		return pop;
 	}
 
+	// TO STRING
 	public String toString() {
 		String listStr = new String();
 		if (getList() != null) {
