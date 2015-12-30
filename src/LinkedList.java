@@ -212,17 +212,39 @@ public class LinkedList implements List {
 	* MUST ALSO UPDATE INDICES BEFORE AND AFTER THIS POSITION
 	*/
 	public ReturnObject remove(int index) {
-		ReturnObjectImpl obj = new ReturnObjectImpl();
+		ReturnObjectImpl obj = checkIndex(index);
+		ObjectNode current = new ObjectNode();
+		current = this.head;
 		/* 
 		* IF INDEX IS EQUAL TO OR GREATER THAN SIZE OF LIST, OR NEGATIVE
 		* ERROR IS RETURNED	(IN RETURNOBJECT)
 		*/
-		if(super.isEmpty()){
-			obj.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
-			return obj;
+		if(obj.getError() == ErrorMessage.NO_ERROR){
+			if(index == 0) {
+				obj.setObject(head.getObject());
+				if(head.getNext() == null) {
+					this.head = null;
+					obj.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
+				}else{
+					this.head.getNext().setPrevious(null);
+					this.head = head.getNext();
+				}
+				numberOfElements--;
+			}else {
+				for (int i = 0; i < (index - 1); i++) {
+					current = current.getNext();
+				}
+				if (current.getNext().getNext() == null){
+					current.setNext(null);
+				}else{
+					current.getNext().getNext().setPrevious(current);
+					current.setNext(current.getNext().getNext());
+				}
+				numberOfElements--;
+				obj.setObject(current.getObject());
+			}
+
 		}
-		obj.setObject(super.getValue(0));
-		obj.setErrorM(ErrorMessage.NO_ERROR);
 		return obj;
 	}
 }
