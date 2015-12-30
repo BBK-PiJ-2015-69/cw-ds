@@ -12,7 +12,7 @@ public class LinkedList implements List {
 
 	private Node head;
 	private Node tail;
-	private int size; //needed?
+	private int numberOfElements; //needed?
 	private int lastPosition = -1; //needed?
 
 	// CONSTRUCTOR
@@ -46,6 +46,7 @@ public class LinkedList implements List {
 		this.lastPosition = lastPosition;
 	}
 
+	// TRUE IF LIST EMPTY
 	public boolean isEmpty() {
 		if (this.lastPosition == -1) {
 			return true;
@@ -53,10 +54,23 @@ public class LinkedList implements List {
 		return false;
 	}
 
+	// RETURNS NUMBER OF ITEMS IN LIST
 	public int size(){
-		return(this.lastPosition + 1)
+		return numberOfElements; //return(this.lastPosition + 1);
 	}
 
+	// TO STRING
+	public String toString(){
+		String ary[];
+		for (int i = 0; i < numberOfElements; i++) {
+			if(list[i] != null) {
+				ary += list[i];
+			}
+		}
+		return ary;
+	}
+
+	// RETURNS OBJECT AT POSITION OF INDEX
 	public ReturnObject get(int index) {
 		ReturnObjectImpl obj = new ReturnObjectImpl();
 		if(super.isEmpty()){
