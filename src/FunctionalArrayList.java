@@ -20,19 +20,23 @@ public class FunctionalArrayList extends ArrayList implements FunctionalList {
 
 	public ReturnObjectImpl head(){
 		ReturnObjectImpl obj = new ReturnObjectImpl();
-		if(super.isEmpty()){
+		if(super.isEmpty()){  // alernatively use super.getObj() == null
 			obj.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
 			return obj;
+		}else{
+			obj.setObject(super.getValue(0)); // alernatively use super.get(0),getReturnValue() ?
+			obj.setErrorM(ErrorMessage.NO_ERROR);
 		}
-		obj.setObject(super.getValue(0));
-		obj.setErrorM(ErrorMessage.NO_ERROR);
 		return obj;
 	}
 
 	public FunctionalArrayList rest(){
 		FunctionalArrayList rest = new FunctionalArrayList();
-
-
+		if(super.isEmpty()){  // alernatively use super.getObj() == null
+			for (int i =1; i <= super.size(); i++) {
+				rest.add(super.getElem(i));
+			}
+		}
 		return rest;
 	}
 
