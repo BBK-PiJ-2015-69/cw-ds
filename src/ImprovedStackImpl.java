@@ -14,7 +14,10 @@ public class ImprovedStackImpl implements ImprovedStack {
 
 	// CONSTRUCTORS
 	public ImprovedStackImpl(){
-		this.list = null;
+		//this.list = null;
+		//undefined so failes when initialise and later pass objects
+		this.list = new FunctionalArrayList(); //not allowed by CW rules to link these?
+		//but this works
 	}
 
 	public ImprovedStackImpl(List list){
@@ -69,7 +72,7 @@ public class ImprovedStackImpl implements ImprovedStack {
 			if(list.size() != 0){
 				int size = (list.size() - 1);
 				top.setErrorM(list.get(size).getError());
-				top.setObject(list.get(size).getReturnVal()); //obj.setObject(super.getValue(0));
+				top.setObject(list.get(size).getReturnValue()); //obj.setObject(super.getValue(0));
 			}else{
 				top.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
 			}
@@ -90,7 +93,7 @@ public class ImprovedStackImpl implements ImprovedStack {
 			if(list.size() != 0){
 				int size = (list.size() - 1);
 				pop.setErrorM(list.get(size).getError());
-				pop.setObject(list.get(size).getReturnVal()); //obj.setObject(super.getValue(0));
+				pop.setObject(list.get(size).getReturnValue()); //obj.setObject(super.getValue(0));
 			}else{
 				pop.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
 			}
@@ -111,7 +114,7 @@ public class ImprovedStackImpl implements ImprovedStack {
 		if(list != null){
 			int size = list.size();
 			for (size = 0; size >=0; size--){
-				reversedList.add(list.get(size).getReturnVal());
+				reversedList.add(list.get(size).getReturnValue());
 			}
 		}
 		return reversedStack;
@@ -125,7 +128,7 @@ public class ImprovedStackImpl implements ImprovedStack {
 	public void remove(Object obj) {
 		if(list != null){
 			for (int i=0; i < list.size(); i++) {
-				if (list.get(i).getReturnVal().equals(obj)) {
+				if (list.get(i).getReturnValue().equals(obj)) {
 					list.remove(i);
 					remove(obj);
 				}
@@ -138,7 +141,7 @@ public class ImprovedStackImpl implements ImprovedStack {
 		String listString = new String();
 		if(list != null){
 			for (int i = 0; i < list.size(); i++) {
-				listString += list.get(i).getReturnVal();
+				listString += list.get(i).getReturnValue();
 			}
 		}
 		return listString;

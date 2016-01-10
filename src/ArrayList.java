@@ -1,19 +1,19 @@
 /**
 * An Array implementation of the List interface
-* List: Common way to store arrays of data; collection of any kind of objects.
-* No null objects. As many as JVM memory can take.
+* List: Common way to store arrays of data; collection of any kind of aryObjects.
+* No null aryObjects. As many as JVM memory can take.
 * Types may be String, Integers, Doubles and other Lists themselves.
 * First element has index of zero; not one.
-* Array: A container object holds fixed number of values; single type
+* Array: A container aryObject holds fixed number of values; single type
 * An approved data structure for this coursework assignment
-* ReturnObject: We need this to handle errors such as null objects
+* ReturnObject: We need this to handle errors such as null aryObjects
 * because this course has not yet taught exceptions
 * @author Luke Jones
 */
 
 public class ArrayList implements List {
 
-	private Object[] list;
+	private Object[] aryObj;
 	private int numberOfElements;
 	private final static int DEFAULT_ARRAY_SIZE = 5;
 	private final static int MAX_ARRAY_SIZE = 10000;
@@ -21,17 +21,17 @@ public class ArrayList implements List {
 	// CONSTRUCTOR
 	public ArrayList(){
 		numberOfElements = 0;
-		list = new Object[DEFAULT_ARRAY_SIZE];
+		aryObj = new Object[DEFAULT_ARRAY_SIZE];
 	}
 
 	// GETTERS
-	public Object[] getObj(){
-		return obj;
+	public Object[] getObject(){
+		return aryObj;
 	}
 
 	public Object getElement(int i) {
 		if(numberOfElements != 0) {
-			return obj[i];
+			return aryObj[i];
 		}else{
 			return null;
 		}
@@ -54,10 +54,10 @@ public class ArrayList implements List {
 
 	// TO STRING
 	public String toString(){
-		String ary[];
+		String ary = "";
 		for (int i = 0; i < numberOfElements; i++) {
-			if(list[i] != null) {
-				ary += list[i];
+			if(aryObj[i] != null) {
+				ary += aryObj[i];
 			}
 		}
 		return ary;
@@ -65,12 +65,12 @@ public class ArrayList implements List {
 
 	// INCREASE ARRAY SIZE
 	public void increaseArray(){
-		if(list.length != 6000){
-			Object[] placeholder = new Object[list.length * 2];
+		if(aryObj.length != 6000){
+			Object[] placeholder = new Object[aryObj.length * 2];
 			for (int i = 0; i < numberOfElements; i++) {
-				placeholder[i] = this.list[i];
+				placeholder[i] = this.aryObj[i];
 			}
-			this.list = placeholder;
+			this.aryObj = placeholder;
 		}
 	}
 
@@ -79,18 +79,18 @@ public class ArrayList implements List {
 	* PARAMETER IS THE INDEX IN QUESTION
 	* 
 	*/
-	public ReturnObject check(int index){
+	public ReturnObjectImpl checkIndex(int index){
 		ReturnObjectImpl obj = new ReturnObjectImpl();
-		if ( (list.length - 2) <= index) {
+		if (aryObj.length - 2 <= index) {
+			increaseArray();
 			obj = checkIndex(index);
-			increaseArray;
 		}else if (numberOfElements == 0) {
 			obj.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
 		}else if (index > numberOfElements || index < 0) {
 			obj.setErrorM(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		}else{
+			obj.setObject(aryObj[index]);
 			obj.setErrorM(ErrorMessage.NO_ERROR);
-			obj.setObj(list[index]);
 		}
 		return obj;
 	}
@@ -99,19 +99,19 @@ public class ArrayList implements List {
 	* RETURNS NUMBER OF ITEMS AT CURRENT POSITION
 	* PARAMETER IS POSITION IN LIST OF ITEM TO RETRIEVE
 	*/
-	public ReturnObject get(int index){
-		ReturnObjectImpl obj = checkIndex(index);
+	public ReturnObjectImpl get(int index){
+		ReturnObjectImpl getterObj = checkIndex(index);
 		/* 
 		* IF INDEX IS EQUAL TO OR GREATER THAN SIZE OF LIST, OR NEGATIVE
 		* ERROR IS RETURNED	(IN RETURNOBJECT)
 		*/
-		if (obj.getError() == ErrorMessage.NO_ERROR) {
-			obj.setObj(list[index]);
-			if(list[index] == null){
-				obj.setErrorM(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		if (getterObj.getError() == ErrorMessage.NO_ERROR) {
+			getterObj.setObject(aryObj[index]);
+			if(aryObj[index] == null){
+				getterObj.setErrorM(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			}
 		}
-		return obj;
+		return getterObj;
 	}
 
 	// ADD
@@ -123,29 +123,29 @@ public class ArrayList implements List {
 	* SECOND PARAMETER IS VALUE TO INSERT INTO LIST
 	* 
 	*/
-	public ReturnObject add(int index, Object item){
-		ReturnObjectImpl obj = checkIndex(index);
+	public ReturnObjectImpl add(int index, Object item){
+		ReturnObjectImpl addIndexItemObj = checkIndex(index);
 		/* 
 		* IF INDEX IS EQUAL TO OR GREATER THAN SIZE OF LIST, OR NEGATIVE
 		* OR IF NULL OBJECT PROVIDED (MUST REJECT)
 		* ERROR IS RETURNED	(IN RETURNOBJECT)
 		*/		
-		if(obj.getError() == ErrorMessage.EMPTY_STRUCTURE) {
+		if(addIndexItemObj.getError() == ErrorMessage.EMPTY_STRUCTURE) {
+			aryObj[index] = item;
+			addIndexItemObj.setErrorM(ErrorMessage.NO_ERROR);
 			numberOfElements++;
-			list[index] = item;
-			index.setErrorM(ErrorMessage.NO_ERROR);
-		}else if(obj.getError() == ErrorMessage.NO_ERROR){
+		}else if(addIndexItemObj.getError() == ErrorMessage.NO_ERROR){
 			if(item != null) {
-				obj.setObj(item);
-				if(list[index] == null) {
+				addIndexItemObj.setObject(item);
+				if(aryObj[index] == null) {
 					numberOfElements++;
 				}
-				list[index] = item;
+				aryObj[index] = item;
 			}else{
-				obj.setErrorM(ErrorMessage.INVALID_ARGUMENT);
+				addIndexItemObj.setErrorM(ErrorMessage.INVALID_ARGUMENT);
 			}
 		}
-		return obj;
+		return addIndexItemObj;
 	}
 
 	/*
@@ -153,35 +153,35 @@ public class ArrayList implements List {
 	* PARAMETER IS VALUE TO INSERT INTO LIST
 	* 
 	*/
-	public ReturnObject add(Object item){
-		ReturnObjectImpl obj = new ReturnObjectImpl(item);
+	public ReturnObjectImpl add(Object item){
+		ReturnObjectImpl addOnlyItemObj = new ReturnObjectImpl(item);
 		/* 
 		* IF NULL OBJECT PROVIDED (MUST REJECT)
 		* ERROR IS RETURNED	(IN RETURNOBJECT)
 		*/
 		if (item == null) {
-			obj.setErrorM(ErrorMessage.INVALID_ARGUMENT);
-			return obj;
+			addOnlyItemObj.setErrorM(ErrorMessage.INVALID_ARGUMENT);
+			return addOnlyItemObj;
 		}
-		if((numberOfElements + 1) >= list.length) {
+		if((numberOfElements + 1) >= aryObj.length) {
 			increaseArray();
 		}
-		if(list[numberOfElements] != null) {
-			for(int i = size; i < list.length; i++) {
-				if(list[i] == null) {
-					list[i] = item;
+		if(aryObj[numberOfElements] != null) {
+			for(int i = numberOfElements; i < aryObj.length; i++) {
+				if(aryObj[i] == null) {
+					aryObj[i] = item;
 					numberOfElements++;
-					obj.setErrorM(ErrorMessage.NO_ERROR);
-					return obj;
+					addOnlyItemObj.setErrorM(ErrorMessage.NO_ERROR);
+					return addOnlyItemObj;
 				}
 			}
 		}else{
-			list[numberOfElements] = item;
+			aryObj[numberOfElements] = item;
 			numberOfElements++;
-			list.setErrorM(ErrorMessage.NO_ERROR);
-			return obj;
+			addOnlyItemObj.setErrorM(ErrorMessage.NO_ERROR);
+			return addOnlyItemObj;
 		}
-		return obj;
+		return addOnlyItemObj;
 	}
 
 	/* 
@@ -189,26 +189,26 @@ public class ArrayList implements List {
 	* PARAMETER IS POSITION OF ITEM TO REMOVE
 	* MUST ALSO UPDATE INDICES BEFORE AND AFTER THIS POSITION
 	*/
-	public ReturnObject remove(int index){
-		ReturnObjectImpl obj = checkIndex(index);
+	public ReturnObjectImpl remove(int index){
+		ReturnObjectImpl removeObj = checkIndex(index);
 		Object placeholder = new Object();
 		/* 
 		* IF INDEX IS EQUAL TO OR GREATER THAN SIZE OF LIST, OR NEGATIVE
 		* ERROR IS RETURNED	(IN RETURNOBJECT)
 		*/
-		if(obj.getError() == ErrorMessage.NO_ERROR) {
-			obj.setObj(list[index]);
-			for(int i = index; i < list.length; i++) {
-				if ((i + 1) != list.length) {
-					placeholder = list[i++];
+		if(removeObj.getError() == ErrorMessage.NO_ERROR) {
+			removeObj.setObject(aryObj[index]);
+			for(int i = index; i < aryObj.length; i++) {
+				if ((i + 1) != aryObj.length) {
+					placeholder = aryObj[i++];
 				}else{
 					placeholder = null;
 				}
-				list[i] = temp;
+				aryObj[i] = placeholder;
 			}
 			numberOfElements--;
 		}
-		return obj;
+		return removeObj;
 	}
 
 }

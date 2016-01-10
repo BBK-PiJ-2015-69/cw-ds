@@ -12,13 +12,13 @@ public class ReturnObjectImpl implements ReturnObject {
 
 	// CONSTRUCTORS
 	public ReturnObjectImpl() {
-		this.object = null;
-		this.error = null;
+		this.obj = null;
+		this.errDetails = null;
 	}
 
 	public ReturnObjectImpl(Object obj) {
-		this.object = obj;
-		this.error = null;
+		this.obj = obj;
+		this.errDetails = null;
 	}
 
 	// GETTERS
@@ -27,7 +27,7 @@ public class ReturnObjectImpl implements ReturnObject {
 	}
 
 	public Object getObject() {
-		return obj();
+		return obj;
 	}
 
 	// SETTERS
@@ -35,7 +35,7 @@ public class ReturnObjectImpl implements ReturnObject {
 		this.errDetails = errDetails;
 	}
 
-	public setObject(Object returnObj) {
+	public void setObject(Object obj) {
 		this.obj = obj;
 	}
 
@@ -71,9 +71,9 @@ public class ReturnObjectImpl implements ReturnObject {
 	//TO STRING
 	public String toString() {
 		if(this.obj != null){
-			return this.obj + ": " + this.error;
+			return this.obj + ": " + this.errDetails;
 		}else{
-			return "NULL: " + this.error;
+			return "NULL: " + this.errDetails;
 		}
 	}
 

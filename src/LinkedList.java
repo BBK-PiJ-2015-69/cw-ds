@@ -25,7 +25,7 @@ public class LinkedList implements List {
 		return head;
 	}
 
-	public void getTail() {
+	public Node getTail() {
 		return tail;
 	}
 
@@ -70,7 +70,7 @@ public class LinkedList implements List {
 
 	// TO STRING ALL
 	public String toStringAll(){
-		ObjectNode current = new ObjectNode();
+		Node current = new Node();
 		current = this.head;
 		String list = "";
 		if (current == null) {
@@ -83,29 +83,43 @@ public class LinkedList implements List {
 		return list;
 	}
 
+	// IF INDEX VALID
+	private boolean validIndex (int index, String oper) {
+		int maxIndex = this.size();
+		if(oper.equals("add")) {
+			maxIndex++;
+		}
+		if((index < 0) || (index >= maxIndex)) {
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+
 	/*
 	* CHECKS AN INDEX AGAAINST ELEMENTS IN LIST
 	* PARAMETER IS THE INDEX IN QUESTION
 	* 
 	*/
-	public ReturnObject check(int index){
+	public ReturnObjectImpl checkIndex(int index){
 		ReturnObjectImpl obj = new ReturnObjectImpl();
-		ObjectNode current = new ObjectNode();
-		current = this.head();
+		Node current = new Node();
+		current = this.head;
 		if (index < 0) {
 			obj.setErrorM(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		}else if (this.head == null) {
 			obj.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
-		}else if (int i = 0; i < index; i++) {
+		}
+		for (int i = 0; i < index; i++) {
 			if (current.getNext() == null) {
 				obj.setErrorM(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 				return obj;
 			}
 			current = current.getNext();
-		}else{
-			obj.setObj(current.getObject());
-			obj.setErrorM(ErrorMessage.NO_ERROR);
 		}
+		obj.setObject(current.getObject());
+		obj.setErrorM(ErrorMessage.NO_ERROR);
 		return obj;
 	}
 
@@ -113,9 +127,9 @@ public class LinkedList implements List {
 	* RETURNS NUMBER OF ITEMS AT CURRENT POSITION
 	* PARAMETER IS POSITION IN LIST OF ITEM TO RETRIEVE
 	*/
-	public ReturnObject get(int index) {
+	public ReturnObjectImpl get(int index) {
 		ReturnObjectImpl obj = checkIndex(index);
-		ObjectNode current = new ObjectNode();
+		Node current = new Node();
 		current = this.head;
 		/* 
 		* IF INDEX IS EQUAL TO OR GREATER THAN SIZE OF LIST, OR NEGATIVE
@@ -125,7 +139,7 @@ public class LinkedList implements List {
 			for (int i = 0; i < index; i++) {
 				current = current.getNext();
 			}
-			obj.setObj(current.getObject());
+			obj.setObject(current.getObject());
 		}
 		return obj;
 	}
@@ -139,29 +153,31 @@ public class LinkedList implements List {
 	* SECOND PARAMETER IS VALUE TO INSERT INTO LIST
 	* 
 	*/
-	public ReturnObject add(int index, Object item) {
+	public ReturnObjectImpl add(int index, Object item) {
 		ReturnObjectImpl obj = checkIndex(index);
-		ObjectNode current = new ObjectNode();
+		Node current = new Node();
 		current = this.head;
 		/* 
 		* IF INDEX IS EQUAL TO OR GREATER THAN SIZE OF LIST, OR NEGATIVE
 		* OR IF NULL OBJECT PROVIDED (MUST REJECT)
 		* ERROR IS RETURNED	(IN RETURNOBJECT)
 		*/	
-		if(obj.getError() == ErrorMessage.EMPTY_STRUCTURE && (index == 0) ) {
+		if(!this.validIndex(index,"add")) {
+ 			obj.setErrorM(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else if(obj.getError() == ErrorMessage.EMPTY_STRUCTURE && index == 0) {
 			numberOfElements++;
-			ObjectNode newNode = new ObjectNode(null, item);
+			Node newNode = new Node(null, item);
 			this.head = newNode;
 			obj.setErrorM(ErrorMessage.NO_ERROR);
 			obj.setObject(newNode.getObject());
 		}else{
 			numberOfElements++;
-			for (int i = 0; i < (index - 1); i++) {
+			for (int i = 0; i < index - 1; i++) {
 				current = current.getNext();
 			}
-			ObjectNode newNode = new ObjectNode(current, item);
+			Node newItem = new Node(current, item);
 			current.setNext(newItem);
-			obj.setObject(newNode.getObject());
+			obj.setObject(newItem.getObject());
 			if (current.getNext().getNext() != null) {
 				current.getNext().getNext().setPrevious(newItem);
 			}
@@ -174,32 +190,32 @@ public class LinkedList implements List {
 	* PARAMETER IS VALUE TO INSERT INTO LIST
 	* 
 	*/
-	public ReturnObject add(Object item) {
-		ReturnObjectImpl obj = checkIndex(index);
+	public ReturnObjectImpl add(Object item) {
+		ReturnObjectImpl obj = new ReturnObjectImpl();
 		/* 
 		* IF INDEX IS EQUAL TO OR GREATER THAN SIZE OF LIST, OR NEGATIVE
 		* OR IF NULL OBJECT PROVIDED (MUST REJECT)
 		* ERROR IS RETURNED	(IN RETURNOBJECT)
 		*/	
 		if(item == null) {
-			obj.setErrorM(ErrorMessage.INVALID_ARGUMENT;
+			obj.setErrorM(ErrorMessage.INVALID_ARGUMENT);
 		}else{
 			if(this.head == null){ 
 				numberOfElements++;
-				ObjectNode newNode = new ObjectNode(null, item);
+				Node newNode = new Node(null, item);
 				this.head = newNode;
 				obj.setErrorM(ErrorMessage.NO_ERROR);
 				obj.setObject(newNode.getObject());
 			}else{
-				ObjectNode current = new ObjectNode();
+				Node current = new Node();
 				current = this.head;
 				while (current.getNext() != null) {
 					current = current.getNext();
 				}
 				numberOfElements++;
-				ObjectNode newNode = new ObjectNode(current, item);
+				Node newItem = new Node(current, item);
 				current.setNext(newItem);
-				obj.setObject(newNode.getObject());
+				obj.setObject(newItem.getObject());
 				obj.setErrorM(ErrorMessage.NO_ERROR);
 			}
 		}
@@ -211,9 +227,9 @@ public class LinkedList implements List {
 	* PARAMETER IS POSITION OF ITEM TO REMOVE
 	* MUST ALSO UPDATE INDICES BEFORE AND AFTER THIS POSITION
 	*/
-	public ReturnObject remove(int index) {
+	public ReturnObjectImpl remove(int index) {
 		ReturnObjectImpl obj = checkIndex(index);
-		ObjectNode current = new ObjectNode();
+		Node current = new Node();
 		current = this.head;
 		/* 
 		* IF INDEX IS EQUAL TO OR GREATER THAN SIZE OF LIST, OR NEGATIVE

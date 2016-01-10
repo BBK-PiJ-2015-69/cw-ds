@@ -18,7 +18,7 @@ public class SampleableListImpl extends ArrayList implements SampleableList {
 	}
 
 	// SETTER
-	public void setList(List list) {}
+	public void setList(List list) {
 		this.list = list;
 	}
 
@@ -28,20 +28,19 @@ public class SampleableListImpl extends ArrayList implements SampleableList {
 	}
 
 	// RETURNS SAMPLE OF LIST (EMPTY IF EMPTY LIST)
+	// FIBONACCI
 	public SampleableList sample() {
 		SampleableListImpl newSampleList = new SampleableListImpl();
-		int currentSize = this.size();
-		if(currentSize > 0) {
-			Object[placeholder] = new Object[(currentSize / 2) + (currentSize % 2)];
+		ArrayList placeholder = new ArrayList();
+		if(this.list != null) {
 			int j = 0;
-			for (int i = 0; i < placeholder.length; i++) {
-				placeholder[i] = this.get(j).getReturnValue();
-				j = j +2;
+			for (int i = 1; i < list.size(); i+=j) {
+				placeholder.add(list.get((i-1)).getReturnValue());
+				j = i;
 			}
 			newSampleList.setList(placeholder);
 		}
 		return newSampleList;
-
 	}
 
 	// TO STRING
@@ -49,7 +48,7 @@ public class SampleableListImpl extends ArrayList implements SampleableList {
 		String listString = new String();
 		if (list != null){
 			for (int i = 0; i < list.size(); i++) {
-				listString += list.get(i).getReturnVal();
+				listString += list.get(i).getReturnValue();
 			}
 		}
 		return listString;

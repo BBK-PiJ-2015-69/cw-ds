@@ -42,9 +42,7 @@ public class StackImpl extends AbstractStack {
 	// ADDS ELEMENT TO TOP OF STACK
 	public void push(Object item){
 		if (internalList != null) {
-			List placeholder = new ArrayList();
-			placeholder.add(item);
-			this.internalList = placeholder();
+			internalList.add(item);
 		}else{
 			this.internalList.add(0,item);
 		}
@@ -59,8 +57,8 @@ public class StackImpl extends AbstractStack {
 		ReturnObjectImpl top = new ReturnObjectImpl();
 		if ((internalList != null) && (internalList.size() != 0)) {
 			int size = (internalList.size() - 1);
-			top.setErrorM(internalList.get(size).getError())
-			top.setObject(internalList.get(size).getReturnVal());
+			top.setErrorM(internalList.get(size).getError());
+			top.setObject(internalList.get(size).getReturnValue());
 		}else{
 			top.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
 		}
@@ -76,8 +74,8 @@ public class StackImpl extends AbstractStack {
 		ReturnObjectImpl pop = new ReturnObjectImpl();
 		if ((internalList != null) && (internalList.size() != 0)) {
 			int size = (internalList.size() - 1);
-			pop.setErrorM(internalList.get(size).getError())
-			pop.setObject(internalList.get(size).getReturnVal());
+			pop.setErrorM(internalList.get(size).getError());
+			pop.setObject(internalList.get(size).getReturnValue());
 		}else{
 		 	pop.setErrorM(ErrorMessage.EMPTY_STRUCTURE);
 		}
@@ -88,7 +86,7 @@ public class StackImpl extends AbstractStack {
 	public String toString() {
 		String listStr = new String();
 		if (getList() != null) {
-			for (int i = 0; i < getList().size; i++){
+			for (int i = 0; i < getList().size(); i++){
 				listStr += getList().get(i).getReturnValue();
 			}
 		}
