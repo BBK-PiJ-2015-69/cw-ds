@@ -446,13 +446,182 @@ public class TEST_MAIN{
 		System.out.println("Current Status" + sList.toString());
 
 // SAMPELABLE LIST: Returns a list containing the first, third, fifth... items of this list
-		
+
 		/** END: SAMPLEABLE LIST **/
 
 
 
 /* ------------------ */
 
+
+
+
+
+
+
+
+
+
+
+
+//---//---//---
+//* STACK *
+//---//---//---
+
+		System.out.println("-**---**---**-");
+		System.out.println("TESTING: STACK");
+		System.out.println("-**---**---**-");
+
+// MAKE THE OLD STACKY!
+		StackImpl stacky = new StackImpl(funcArrayList);
+		
+// BOOLEAN ISEMPTY: Returns true if the list is empty, 
+		System.out.println("Check it empty ->" + stacky.isEmpty());
+// False otherwise.
+
+
+// SIZE: Returns the number of items currently in the list.
+		System.out.println("Size -> " + stacky.size());
+
+/* PUSH > OBJECT: 
+* Adds an element at the top of the stack.
+*/		System.out.println("Push to stack our test object 2");
+		stacky.push(test2);
+
+// BOOLEAN ISEMPTY: Returns true if the list is empty, 
+		System.out.println("Check it empty ->" + stacky.isEmpty());
+// False otherwise.
+
+		System.out.println("Current status -> " + funcArrayList);
+
+/* POP: Returns the element at the top of the stack. 
+* The element is removed from the stack.
+*/
+
+		System.out.println("Let's run POP -> " + stacky.pop().getReturnValue());
+
+/* TOP: Returns the element at the top of the stack. 
+* The stack is left unchanged.
+*/
+
+		System.out.println("Let's run TOP -> " + stacky.top().getReturnValue());
+
+//Add more
+
+		System.out.println("Push to stack our test object 3");
+		stacky.push(test3);
+
+		System.out.println("Check it empty ->" + stacky.isEmpty());
+
+		System.out.println("Current status -> " + funcArrayList);
+
+// POP AND TOP AGAIN
+
+		System.out.println("Let's run TOP -> " + stacky.top().getReturnValue());
+
+		System.out.println("Let's run POP -> " + stacky.pop().getReturnValue());
+
+		System.out.println("Current status -> " + funcArrayList);
+
+
+
+
+
+		/* ---------------- */
+
+		
+
+
+
+//---//---//---//---//---//---
+//* Improved Stack *
+//---//---//---//---//---//---
+
+		System.out.println("-**---**---**-");
+		System.out.println("TESTING: IMPROVED STACK");
+		System.out.println("-**---**---**-");
+
+// MAKE THE IMPROVED STACKY :D :D :D
+		ImprovedStack stackyImproved1 = new ImprovedStackImpl();
+
+// REMOVE:  Removes the given object from the stack if it is there. 
+		System.out.println("Will fail to remove non existent entry of interger 1");
+		stackyImproved1.remove(new Integer(1));
+
+// Multiple instances of the object are all removed.
+
+// BOOLEAN ISEMPTY: Returns true if the list is empty, 		
+		System.out.println("IS EMPTY? " + stackyImproved1.isEmpty());
+// False otherwise.
+
+/* PUSH > OBJECT: 
+* Adds an element at the top of the stack.
+*/	
+		stackyImproved1.push("England");
+		stackyImproved1.push("Wales");
+		stackyImproved1.push("Scotland");
+		stackyImproved1.push("N-Ireland");
+		stackyImproved1.push("Guernsey");
+		stackyImproved1.push("Manx");
+		stackyImproved1.push("Australia");
+		
+		System.out.println("Current state of the nation -> "+ stackyImproved1.toString());
+
+		System.out.println("7 states - add as interger");
+		
+		stackyImproved1.push(new Integer(7));
+
+		System.out.println("Current state of the nation -> "+ stackyImproved1.toString());
+
+/* IMPROVED STACK *REVERSE*: Returns a copy of this stack with the items reversed, 
+* the top elements on the original stack is at the bottom of the new stack and viceversa.
+*/
+		System.out.println("Current state of the nation in REVERSE" + stackyImproved1.reverse().toString());
+
+
+		System.out.println("Current state of the nation -> "+ stackyImproved1.toString());
+
+// DELETE
+		System.out.println("- - -  LET'S DO SOME DELETIONS");
+
+		//System.out.println("Let's delete our Test Object 1 that we never added and see if error");
+		//stackyImproved2.remove(test1);//Exception in thread "main" java.lang.NullPointerExceptionat ImprovedStackImpl.remove(ImprovedStackImpl.java:131)
+		
+		System.out.println("Australia is not part of the union");
+		stackyImproved1.remove("Australia");
+
+		stackyImproved1.remove(new Integer(4));
+
+		System.out.println("Current state of the nation -> "+ stackyImproved1.toString());
+
+		System.out.println("Sad news - Scotland voted to leave the family :'(");
+		stackyImproved1.remove("Scotland");
+
+		System.out.println("Due to a technical glitch, Scotland was given Manx, Guernsey and N Ireland.");
+
+		stackyImproved1.remove(new Integer(4));
+
+		System.out.println("Current state of the nation  -> "+ stackyImproved1.toString());
+		
+		System.out.println("The state of the nation -> " + stackyImproved1);
+
+		System.out.println("- - - ");
+
+//POP EMPTY STACK FOR TEST ERROR
+// If the stack is empty, pop gives an appropriate error.
+// If the stack is empty, top gives an appropriate error.
+
+// Third stack
+		ImprovedStackImpl stackyImproved2 = new ImprovedStackImpl(funcArrayList);
+
+		System.out.println("IS EMPTY? " + stackyImproved2.isEmpty());
+		
+		System.out.println("Try to Pop on empty stack - gives an appropriate error");
+		System.out.println(stackyImproved2.pop().getReturnValue());
+
+		System.out.println("Try take from Top on empty stack - gives an appropriate error"); 
+		System.out.println(stackyImproved2.top().getReturnValue());
+			
 
 
 
