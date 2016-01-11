@@ -343,6 +343,62 @@ public class TEST_MAIN{
 
 
 
+//---//-----
+//* FUNCTIONAL LINKED LIST *
+//---//-----
+
+
+		System.out.println("-**---**---**-");
+		System.out.println("TESTING: FUNCTIONAL LINKED LIST");
+		System.out.println("-**---**---**-");
+
+		/** LINKED LIST Tests **/
+// LET'S MAKE OUR FUNCTIONAL LINKED LIST ;)
+
+		FunctionalLinkedList funcLinkedList = new FunctionalLinkedList();
+
+//TYPES - try adding object
+		System.out.println("If I try to add object: " + funcLinkedList.add(test1));
+
+		System.out.println("Current status -> " + funcLinkedList.toString());
+		System.out.println("- - -");
+
+// If Empty return true, else false
+		System.out.println("Empty? " + funcLinkedList.isEmpty());
+
+//Check size		
+		System.out.println("Size: " + funcLinkedList.size());
+
+		System.out.println("Call index 0 -> " + funcLinkedList.get(0));
+
+		System.out.println("Check if error ->" + testObj1.getError());
+
+		System.out.println("Current status -> " + funcArrayList.toString());
+		System.out.println("- - -");
+
+		System.out.println("Add object to index 1 -> " + funcLinkedList.add(1, test2));
+
+		System.out.println("Check if error ->" + testObj1.getError());
+
+		System.out.println("Current status -> " + funcArrayList.toString());
+		System.out.println("- - -");
+		
+// Call to Head
+		System.out.println("Head: " + funcLinkedList.head());
+		
+// Call to Rest
+		System.out.println("Rest: " + funcLinkedList.rest().toStringAll());
+
+// Error if POP element from EMPTY stack
+///////		
+
+
+
+/* ---------------- */
+
+
+
+
 
 
 
