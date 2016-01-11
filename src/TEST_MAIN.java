@@ -193,6 +193,103 @@ public class TEST_MAIN{
 
 		System.out.println(testAL.toString());
 
+
+
+//---//---//---//---//---//---
+//* Error Message  *
+//---//---//---//---//---//---
+
+
+// If message NO_ERROR, if no there is no error. (Test this? Called by ReturnObject)
+		ErrorMessage errorMsgOne = ErrorMessage.NO_ERROR;
+		System.out.println("Error Message is ->  " + errorMsgOne);
+
+/* If message EMPTY_STRUCTURE returned 
+* when the programmer tries to retrieve an element from an empty data structure.
+*/
+		errorMsgOne = ErrorMessage.EMPTY_STRUCTURE;
+		System.out.println("Error Message is ->  " + errorMsgOne);
+
+/* If message INDEX_OUT_OF_BOUNDS produced 
+* when the programmer tries to insert an element on a negative index of a list.
+*/
+		errorMsgOne = ErrorMessage.INDEX_OUT_OF_BOUNDS;
+		System.out.println("Error Message is ->  " + errorMsgOne);
+		// you can set an enumerated type to null
+		errorMsgOne = null;
+		System.out.println("Error Message is ->  " + errorMsgOne);
+		//now let's set it to something else!
+
+/* If message INVALID_ARGUMENT when the programmer 
+* tries to insert a null element in a list that does not allow null elements.
+*/
+		errorMsgOne = ErrorMessage.INVALID_ARGUMENT;
+		System.out.println("Error Message is ->  " + errorMsgOne);
+		
+// Testing of equality with enumerated types
+
+/* NO ERROR
+* Boolean result true or false for comparisons
+* If errorMsgTwo equals errorMsgOne (above)
+* Used both double equals and .equals; should be same result
+*/
+		ErrorMessage errorMsgTwo = ErrorMessage.NO_ERROR;
+		System.out.println(Boolean.toString(errorMsgTwo.equals(errorMsgOne)));
+		System.out.println(Boolean.toString(errorMsgTwo == errorMsgOne));
+
+// Show result
+		System.out.println(errorMsgTwo.toString());
+
+/* INVALID ARGUMENT
+* Boolean result true or false for comparisons
+* If errorMsgTwo equals errorMsgOne (above)
+* Used both double equals and .equals; should be same result
+*/
+		errorMsgTwo = ErrorMessage.INVALID_ARGUMENT;
+		System.out.println(Boolean.toString(errorMsgTwo.equals(errorMsgOne)));
+		System.out.println(Boolean.toString(errorMsgTwo == errorMsgOne));
+		
+// Show result
+		System.out.println(errorMsgTwo.toString());
+
+// Dump HASH to screen
+		System.out.println(errorMsgTwo.hashCode());
+
+
+
+//---//---//---//---//-----
+//* RETURN OBJECT *
+//---//---//---//---//-----
+
+
+
+// HAS ERROR: Returns whether there has been an error
+
+
+
+
+// GET ERROR: Returns error message
+
+
+
+
+// Must return NO_ERROR if and only if {@hasError} returns false.
+
+
+
+
+/* GET RETURN VALUE: Returns the object wrapped in this ReturnObject, i.e. the
+* result of the operation if it was successful, or null if
+* there has been an error.
+*/
+
+
+
+
+/* Note that the output of this method must be null if {@see
+* hasError} returns true, but the opposite is not true: if
+* {@see hasError} returns false, this method may or may not return null.
+*/
 		
 	}
 }
