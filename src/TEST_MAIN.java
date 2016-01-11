@@ -398,6 +398,63 @@ public class TEST_MAIN{
 
 
 
+//---//---//---//---//---//----
+//* SAMPLEABLE LIST *
+//---//---//---//---//---//----
+
+		System.out.println("-**---**---**-");
+		System.out.println("TESTING: SAMPLEABLE LIST");
+		System.out.println("-**---**---**-");
+
+		SampleableList sList = new SampleableListImpl();
+
+// An empty list if the list is empty. public class TEST_SampleableList{
+
+
+//Try adding some different types
+
+//Interger - to index 0
+		
+		System.out.println("Adding Interger - to index 0");
+
+		ReturnObject testObj4 = sList.add(0, new Integer(7));
+		
+		System.out.println("Current Status" + sList.sample().toString());
+
+//Add Boolean
+		
+		System.out.println("Adding Boolean - index not defined");
+
+		testObj4 = sList.add(new Boolean(true));
+		
+		System.out.println("Current Status" + sList.sample().toString());
+
+//String - direct to index 2
+		
+		System.out.println("Adding string - to index 2");
+
+		testObj4 = sList.add(2, "Sweet Chilli Sauce");
+		
+		System.out.println("Current Status" + sList.toString());
+
+//Adding string with no index defined	
+		
+		System.out.println("Adding string - no index defined");
+
+		testObj4 = sList.add("Honey Nut Cornflakes");
+		
+		System.out.println("Current Status" + sList.toString());
+
+// SAMPELABLE LIST: Returns a list containing the first, third, fifth... items of this list
+		
+		/** END: SAMPLEABLE LIST **/
+
+
+
+/* ------------------ */
+
+
+
 
 
 
