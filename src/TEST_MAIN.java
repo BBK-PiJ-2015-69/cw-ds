@@ -195,6 +195,161 @@ public class TEST_MAIN{
 
 
 
+
+/* ------------------ */
+
+
+
+//---//---//---//---//---//----//---//---//---//-----//---//----
+//* SOME TESTING OBJECTS FOR FUNCTIONAL LINKED AND ARRAY LISTS *
+//---//---//---//---//---//----//---//---//---//-----//---//----
+
+		
+		TestingObj test1 = new TestingObj(1);
+		TestingObj test2 = new TestingObj(2);
+		TestingObj test3 = new TestingObj(3);
+		TestingObj test4 = new TestingObj(4);
+		TestingObj test5 = new TestingObj(5);
+
+
+		/** ARRAY LIST Tests **/
+
+		System.out.println("-**---**---**-");
+		System.out.println("TESTING: ARRAY LIST");
+		System.out.println("-**---**---**-");
+
+
+
+
+
+//---//---//---//---//---//----
+//* Functional Array List *
+//---//---//---//---//---//----
+
+// LET'S MAKE OUR FUNCTIONAL ARRAY LIST ;)
+		FunctionalArrayList funcArrayList = new FunctionalArrayList();
+
+		System.out.println("Empty; Current Items: " + Integer.toString(funcArrayList.size()));
+		System.out.println("Gives no error" + funcArrayList.toString());
+		System.out.println("- - -");
+
+// Error if POP element from EMPTY stack
+///////		
+
+
+////
+// ADD OBJECTS
+
+// Some array list building
+		ReturnObject testObj1 = funcArrayList.add(0, " So adding this to index 1");
+		System.out.println("Current status -> " + funcArrayList.toString());
+		System.out.println("- - -");
+
+//ACCEPT MANY TYPES :. let's try object to index
+		testObj1 = funcArrayList.add(2, " Attempt to add this to index 2");
+
+
+// Types - Boolean
+		testObj1 = funcArrayList.add(1, new Boolean(true));
+		System.out.println("Added a Boolean with result true");
+
+		System.out.println("Check if error ->" + testObj1.getError());
+
+		System.out.println("Current status -> " + funcArrayList.toString());
+		System.out.println("- - -");
+
+//If not null, creates a new abstract stack using the provided list
+		System.out.println("If I try to add object: " + test1 + "- " + funcArrayList.add(test1).getError());
+
+
+		System.out.println("Check if error ->" + testObj1.getError());
+
+		System.out.println("Current status -> " + funcArrayList.toString());
+
+		System.out.println("FAL: " + funcArrayList);	
+// GET SIZE
+		System.out.println("Size: " + funcArrayList.size() + ", Head: " + funcArrayList.head() + ", Rest: " + funcArrayList.rest());
+		System.out.println("- - -");
+
+		testObj1 = funcArrayList.add(" -- Third Addition ");
+
+		System.out.println("Check if error ->" + testObj1.getError());
+
+		System.out.println("Current status -> " + funcArrayList.toString());
+		System.out.println("- - -");
+
+
+		System.out.println("FAL: " + funcArrayList);	
+		System.out.println("Size: " + funcArrayList.size() + ", Head: " + funcArrayList.head() + ", Rest: " + funcArrayList.rest());
+		System.out.println("- - -");
+
+		testObj1 = funcArrayList.remove(1);
+		System.out.println("Removed Index 2 -> " + testObj1.toString());
+
+		System.out.println("Check if error ->" + testObj1.getError());
+
+// POPPING ??
+		System.out.println("Get return second index " + funcArrayList.get(0).getReturnValue());
+
+		System.out.println("Check if error ->" + testObj1.getError());
+
+// ADDING
+		System.out.println("Add object to index 3: " + test2 + "- " + funcArrayList.add(3, test2));
+
+		System.out.println("Current status -> " + funcArrayList.toString());
+
+		System.out.println("Check if error ->" + testObj1.getError());		
+
+		System.out.println("Get return first index -> " + funcArrayList.get(1).getReturnValue());
+
+		System.out.println("Check if error ->" + testObj1.getError());
+
+		System.out.println("Current status -> " + funcArrayList.toString());
+		System.out.println("- - -");
+
+		testObj1 = funcArrayList.remove(1);
+		System.out.println("Attempt to remove index 1 again " + testObj1.toString());
+
+		System.out.println("Check if error ->" + testObj1.getError());
+
+		System.out.println("Current status -> " + funcArrayList.toString());
+		System.out.println("- - -");
+/* Check whether the provided list is null.
+* If a null list is provided, a NullPointerException will be thrown at runtime 
+* as soon as any operation is attempted on the underlying list. 
+*/
+		System.out.println("Let's got for NULL - see if error -> " + funcArrayList.add(null).getError());
+
+		System.out.println("FAL: " + funcArrayList);	
+		System.out.println("Size: " + funcArrayList.size() + ", Head: " + funcArrayList.head() + ", Rest: " + funcArrayList.rest());
+
+		System.out.println("Check if error ->" + testObj1.getError());
+
+		System.out.println("Current status -> " + funcArrayList.toString());
+
+		System.out.println("If I try to remove an object at index 0: " + funcArrayList.remove(0).getReturnValue());
+		
+		System.out.println("FAL: " + funcArrayList);	
+		System.out.println("Size: " + funcArrayList.size() + ", Head: " + funcArrayList.head() + ", Rest: " + funcArrayList.rest());
+
+		System.out.println("Check if error ->" + testObj1.getError());
+
+		System.out.println("Current status -> " + funcArrayList.toString());
+
+
+
+/* ---------------- */
+
+
+
+
+
+
+
+/* ------------------ */
+
+
+
 //---//---//---//---//---//---
 //* Error Message  *
 //---//---//---//---//---//---
@@ -254,6 +409,10 @@ public class TEST_MAIN{
 
 // Dump HASH to screen
 		System.out.println(errorMsgTwo.hashCode());
+
+
+
+/* ------------------ */
 
 
 
