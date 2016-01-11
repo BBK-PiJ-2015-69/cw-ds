@@ -11,6 +11,8 @@ public class ReturnObjectImpl implements ReturnObject {
 	private Object obj;
 
 	// CONSTRUCTORS
+
+	// SHould be only one constructor with parameter object and another for errors
 	public ReturnObjectImpl() {
 		this.obj = null;
 		this.errDetails = null;
@@ -58,7 +60,7 @@ public class ReturnObjectImpl implements ReturnObject {
 	}
 
 	/*
-	* REUTNRS OPERATION RESULT
+	* RETURNS OPERATION RESULT
 	* OBJECT (WRAPPED IN RETURNOBJECT)
 	*/
 	public Object getReturnValue() {

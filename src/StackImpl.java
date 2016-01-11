@@ -39,6 +39,8 @@ public class StackImpl extends AbstractStack {
 		}
 	}
 
+///..... USE EQUALS TO PUSH!
+
 	// ADDS ELEMENT TO TOP OF STACK
 	public void push(Object item){
 		if (internalList != null) {

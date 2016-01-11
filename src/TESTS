@@ -1,0 +1,349 @@
+////---//---//-----
+// TESTS //
+////---//---//-----
+
+
+
+//---//---//---//---//---//---
+//* Abstract Stack *
+//---//---//---//---//---//---
+
+
+
+// Error if POP element from EMPTY stack
+
+
+
+
+/* Check whether the provided list is null.
+* If a null list is provided, a NullPointerException will be thrown at runtime 
+* as soon as any operation is attempted on the underlying list. 
+*/
+
+
+
+
+//If not null, creates a new abstract stack using the provided list
+
+
+
+
+//---//---//---//---//---//---
+//* Error Message  *
+//---//---//---//---//---//---
+
+
+
+// If message NO_ERROR, if no there is no error. (Test this? Called by ReturnObject)
+
+
+
+
+/* If message EMPTY_STRUCTURE returned 
+* when the programmer tries to retrieve an element from an empty data structure.
+*/
+
+
+
+
+/* If message INDEX_OUT_OF_BOUNDS produced 
+* when the programmer tries to insert an element on a negative index of a list.
+*/
+
+
+
+
+/* If message INVALID_ARGUMENT when the programmer 
+* tries to insert a null element in a list that does not allow null elements.
+*/
+
+
+
+
+/* Testing of equality with enumerated types
+* NO ERROR
+* INVALID ARGUMENT
+*/
+
+
+//---//---//---//---//---//----
+//* Functional List *
+//---//---//---//---//---//----
+
+
+
+// RETURN OBJECT *HEAD*: Returns the element at the beginning of the list. 
+
+
+
+
+// Error if extract the head from an empty list, an appropriate error is returned
+
+
+
+
+// RETURN OBJECT *REST*: Returns a list with the elements in this list except the head.
+
+
+
+
+/* Are the elements must be in the same order? 
+* The original list must not change or be affected by changes in the new list. 
+*/
+
+
+
+
+// If the list is empty, another empty list is returned. 
+
+
+
+
+//---//---//---//---//---//---
+//* Improved Stack *
+//---//---//---//---//---//---
+
+
+
+/* IMPROVED STACK *REVERSE*: Returns a copy of this stack with the items reversed, 
+* the top elements on the original stack is at the bottom of the new stack and viceversa.
+*/
+
+
+
+
+// Error if a programmer may try to pop an element from an empty stack.
+
+
+
+
+// REMOVE:  Removes the given object from the stack if it is there. 
+
+
+
+
+// Multiple instances of the object are all removed.
+
+
+
+
+/* Classes implementing this method must use method .equals() 
+* to check whether the item is in the stack or not.
+*/
+
+
+
+
+//---//-----
+//* LIST *
+//---//-----
+
+
+
+// The first element in the list is at index 0
+
+
+
+
+/* A list can store objects of any kind, and they can be of different types: 
+* Integers, Doubles, String, or even other lists. 
+*/
+
+
+
+
+// This list cannot store null objects.
+
+
+
+
+// There is no limit to the number of elements in the list
+
+
+
+
+// Error if remove an element from an empty list
+
+
+
+
+// Error uf renove element from a position where there is nothing.
+
+
+
+
+// BOOLEAN ISEMPTY: Returns true if the list is empty, 
+
+
+
+
+// False otherwise.
+
+
+
+
+// SIZE: Returns the number of items currently in the list.
+
+
+
+
+// GET > INT INDEX: Returns the element at the given position - encapsulated in a ReturnObject
+
+
+
+/* If the index is negative or greater or equal than the size of the list, 
+* then an appropriate error must be returned - encapsulated in a ReturnObject
+*/
+
+
+
+
+/* REMOVE: Returns the elements at the given position and removes it
+* from the list. The indeces of elements after the removed
+* element must be updated accordignly.
+*/
+
+
+
+
+/* If the index is negative or greater or equal than the size of
+* the list, then an appropriate error must be returned.
+*/
+
+
+
+
+/* ADD with INT and OBJECT parameters: Adds an element to the list, inserting it at the given position. 
+* The indeces of elements at and after that position must be updated accordignly.
+*/
+
+
+
+
+/* If the index is negative or greater or equal than the size of
+* the list, then an appropriate error must be returned.
+*/
+
+
+
+ 
+/* If a null object is provided to insert in the list, the
+* request must be ignored and an appropriate error must be returned.
+*/
+
+
+
+
+//ADD with only OBJECT parameter: Adds an element at the end of the list.
+ 
+/* If a null object is provided to insert in the list, the
+* request must be ignored and an appropriate error must be returned.
+*/
+
+
+
+
+//---//---//---//---//-----
+//* RETURN OBJECT *
+//---//---//---//---//-----
+
+
+
+// HAS ERROR: Returns whether there has been an error
+
+
+
+
+// GET ERROR: Returns error message
+
+
+
+
+// Must return NO_ERROR if and only if {@hasError} returns false.
+
+
+
+
+/* GET RETURN VALUE: Returns the object wrapped in this ReturnObject, i.e. the
+* result of the operation if it was successful, or null if
+* there has been an error.
+*/
+
+
+
+
+/* Note that the output of this method must be null if {@see
+* hasError} returns true, but the opposite is not true: if
+* {@see hasError} returns false, this method may or may not return null.
+*/
+
+
+
+
+//---//---//---//---//---//----
+//* SAMPLEABLE LIST *
+//---//---//---//---//---//----
+
+
+
+// SAMPELABLE LIST: Returns a list containing the first, third, fifth... items of this list
+
+
+
+
+// An empty list if the list is empty. 
+
+
+
+
+//---//---//---
+//* STACK *
+//---//---//---
+
+
+
+// BOOLEAN ISEMPTY: Returns true if the list is empty, 
+
+
+
+
+// False otherwise.
+
+
+
+
+// SIZE: Returns the number of items currently in the list.
+
+
+
+
+/* PUSH > OBJECT: 
+* Adds an element at the top of the stack.
+*/
+
+
+
+
+/* TOP: Returns the element at the top of the stack. 
+* The stack is left unchanged.
+*/
+
+
+
+
+// If the stack is empty, an appropriate error.
+
+
+
+
+/* POP: Returns the element at the top of the stack. 
+* The element is removed from the stack.
+*/
+
+
+
+
+// If the stack is empty, an appropriate error.
+
+
+
